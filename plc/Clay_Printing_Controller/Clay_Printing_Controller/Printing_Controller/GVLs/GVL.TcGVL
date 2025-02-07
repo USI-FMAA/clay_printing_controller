@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <GVL Name="GVL" Id="{b786930b-3341-4b33-a23d-249f3bbfc84e}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+// 
+// ***********************************************************************************
+// 
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Global varable
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+
+VAR_GLOBAL
+	
+	// Controller 1
+	b_mode_manual : BOOL;
+	b_mode_laptop : BOOL; 
+	b_mode_robot : BOOL;  
+	
+	b_CC1_enable :BOOL;
+	b_CC1_power_on: BOOL;
+	s_current_mode: STRING;
+	
+	// Machine 1
+	// Machine 2
+	
+	// Concrete Pump 1
+	b_CP1_Check_On : BOOL;
+	b_CP1_is_run : BOOL;
+	b_CP1_is_ready : BOOL;	
+	b_CP1_power_on :BOOL;
+	b_CP1_safety_grid_on : BOOL;
+	b_CP1_drive_error :BOOL;
+	
+	
+	// Config
+	// Concrete Pump 1
+	f_CP1_Max_Flowrate : REAL;
+	f_CP1_Check_Flowrate : REAL;
+	t_CP1_Check_Duration : TIME;
+ 	n_CP1_Flush_Flowrate :REAL;	
+
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

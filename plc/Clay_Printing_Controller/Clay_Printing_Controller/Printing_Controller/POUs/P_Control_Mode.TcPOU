@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="P_Control_Mode" Id="{257c4f21-4afb-49d3-84fe-3325b52e1ec9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Control_Mode
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Control mode selection
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+
+GVL.b_mode_manual := GVL_IO.ib_CC1_Button_Mode_Manual;
+GVL.b_mode_laptop := GVL_IO.ib_CC1_Button_Mode_Laptop;
+GVL.b_mode_robot := False;
+
+IF GVL.b_mode_manual THEN
+	GVL.s_current_mode := 'Controller';
+ELSIF GVL.b_mode_laptop  THEN
+	GVL.s_current_mode := 'Laptop';
+// if all not run robot mode
+ELSIF NOT GVL.b_mode_manual AND NOT GVL.b_mode_laptop THEN
+	GVL.s_current_mode := 'Robot';
+	GVL.b_mode_robot := TRUE;
+ELSE
+	GVL.s_current_mode := 'None';
+
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="P_Control_Mode">
+      <LineId Id="41" Count="0" />
+      <LineId Id="28" Count="12" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="26" Count="1" />
+      <LineId Id="6" Count="13" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
