@@ -23,48 +23,44 @@ VAR_GLOBAL
 	// ***** HARDWARE INPUT ******
 
 	// Concrete Controller 1
-	ib_CC1_Safety_Ready AT %I*: BOOL; 				// DI1
-	ib_CC1_Button_Mode_Manual AT %I*: BOOL;		// DI6
-	ib_CC1_Button_Mode_Laptop AT %I*: BOOL;		// DI8
-	ib_CC1_Button_Reset AT %I*: BOOL;					// DI7
+	ib_CC1_Safety_Ready       AT %I*: BOOL;  // DI1
+	ib_CC1_Button_Mode_Manual AT %I*: BOOL;  // DI6
+	ib_CC1_Button_Mode_Laptop AT %I*: BOOL;  // DI8
+	ib_CC1_Button_Reset       AT %I*: BOOL;  // DI7
 
 	// Concrete Pump 1
 	ib_CP1_Safety_Grid_Mounted AT %I*: BOOL;  // DI2
-	ib_CP1_Ready AT %I*: BOOL;                // DI3
-	ib_CP1_Drive_Error AT %I*: BOOL;          // DI4
+	ib_CP1_Ready               AT %I*: BOOL;  // DI3
+	ib_CP1_Drive_Error         AT %I*: BOOL;  // DI4
+	ib_CP1_Actual_Speed        AT %I*: INT;   // AI1
 
-	ib_CP1_Actual_Speed AT %I* :INT;           // AI1
-
-	// spare
-	ibSpare1 AT %I*: BOOL; //DI5
-
-	inSpare2 AT %I*: INT;  //AI2
-	inSpare3 AT %I*: INT;  //AI3
-	inSpare4 AT %I*: INT;  //AI4
+	// Spare Slot
+	ibSpare1 AT %I*: BOOL;  //DI5
+	inSpare2 AT %I*: INT;   //AI2
+	inSpare3 AT %I*: INT;   //AI3
+	inSpare4 AT %I*: INT;   //AI4
 
 
 	// ***** HARDWARE OUTPUT ******
 
 	// Concrete Controller 1
-	ob_CC1_Safety_Reset AT %Q*: BOOL;       //DO1
+	ob_CC1_Safety_Reset AT %Q*: BOOL;  //DO1
 
-	//
 	// Concrete Pump 1
-	ob_CP1_Start AT %Q*: BOOL; //DO3
-	ob_CP1_Stop AT %Q*: BOOL;  //DO2
-	ob_CP1_Forward AT %Q*: BOOL; //DO4
-	ob_CP1_Backward AT %Q*: BOOL; //DO5
+	ob_CP1_Start    AT %Q*: BOOL;  //DO3
+	ob_CP1_Stop     AT %Q*: BOOL;  //DO2
+	ob_CP1_Forward  AT %Q*: BOOL;  //DO4
+	ob_CP1_Backward AT %Q*: BOOL;  //DO5
+	on_CP1_Speed    AT %Q*: INT;   //AO1
 
-	on_CP1_Speed AT %Q*: INT; //AO1
+	// Spare Slot
+	obSpare6 AT %Q*: BOOL;  //DO6
+	obSpare7 AT %Q*: BOOL;  //DO7
+	obSpare8 AT %Q*: BOOL;  //DO8
 
-	// spare
-	obSpare6 AT %Q*: BOOL; //DO6
-	obSpare7 AT %Q*: BOOL; //DO7
-	obSpare8 AT %Q*: BOOL; //DO8
-
-	onSpare2 AT %Q*: INT;  //AO2
-	onSpare3 AT %Q*: INT;  //AO3
-	onSpare4 AT %Q*: INT;  //AO4
+	onSpare2 AT %Q*: INT;   //AO2
+	onSpare3 AT %Q*: INT;   //AO3
+	onSpare4 AT %Q*: INT;   //AO4
 
 END_VAR]]></Declaration>
   </GVL>

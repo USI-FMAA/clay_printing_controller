@@ -31,7 +31,6 @@ IF GVL.b_mode_manual THEN
 	GVL.s_current_mode := 'Controller';
 ELSIF GVL.b_mode_laptop  THEN
 	GVL.s_current_mode := 'Laptop';
-// if all not run robot mode
 ELSIF NOT GVL.b_mode_manual AND NOT GVL.b_mode_laptop THEN
 	GVL.s_current_mode := 'Robot';
 	GVL.b_mode_robot := TRUE;
