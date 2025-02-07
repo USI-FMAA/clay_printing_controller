@@ -29,8 +29,8 @@ uv pip install -e
 ```
 
 
->![NOTE]
-> This is a start repo for TwinCAT.
+> [!NOTE]
+> This is a start repo for TwinCAT, feel free to change.
 
 ## Package Information
 
