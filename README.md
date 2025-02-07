@@ -15,7 +15,9 @@ This a repository for the Clay Printing Controller.
 
 #### TwinCAT setup
 
-TBC..
+Please find the document [HERE]().
+
+Also, Check more information for previous project [DCS](https://github.com/USI-FMAA/digital_casting_system_controller)
 
 #### Development environment
 
@@ -31,7 +33,7 @@ uv pip install -e .
 ## Package Information
 > [!NOTE]
 > This is an initial repo structure, feel free to change. it
->
+
 * `plc`: the TwinCAT project for the PLC controller.
 * `robot`: the folder for the robot control.
 * `script`: the example script for controlling Beckhoff controller via Python.

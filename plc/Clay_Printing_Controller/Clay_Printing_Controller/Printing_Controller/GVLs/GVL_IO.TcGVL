@@ -33,7 +33,7 @@ VAR_GLOBAL
 	ib_CP1_Ready AT %I*: BOOL;                // DI3
 	ib_CP1_Drive_Error AT %I*: BOOL;          // DI4
 
-	ib_CP1_Actual_Speed AT %I* INT;           // AI1
+	ib_CP1_Actual_Speed AT %I* :INT;           // AI1
 
 	// spare
 	ibSpare1 AT %I*: BOOL; //DI5

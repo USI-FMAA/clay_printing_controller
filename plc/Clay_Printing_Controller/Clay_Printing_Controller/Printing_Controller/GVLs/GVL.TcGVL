@@ -47,7 +47,6 @@ VAR_GLOBAL
 	f_CP1_Check_Flowrate : REAL;
 	t_CP1_Check_Duration : TIME;
  	n_CP1_Flush_Flowrate :REAL;	
-
 	
 END_VAR]]></Declaration>
   </GVL>
