@@ -9,7 +9,7 @@ This a repository for the Clay Printing Controller.
 ## Development
 
 - TwinCAT: `v3.1 build4022.24`
-- UV: A blazingly fast Python package management (in Rust)
+- [UV]: A blazingly fast Python package management (in Rust)
 
 ### Getting Started
 
@@ -28,13 +28,10 @@ uv pip install -e .
 
 ```
 
-
-
-
 ## Package Information
 > [!NOTE]
 > This is an initial repo structure, feel free to change. it
-> 
+>
 * `plc`: the TwinCAT project for the PLC controller.
 * `robot`: the folder for the robot control.
 * `script`: the example script for controlling Beckhoff controller via Python.
