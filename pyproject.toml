@@ -1,0 +1,79 @@
+[project]
+name = "clay printing"
+version = "0.1.0"
+description = "A project for contorl clay printing contrller"
+authors = [
+    {name = "Wei-Ting Chen", email = "chen@mesh.ch"},
+]
+
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "loguru>=0.7.3",
+    "pytest-cov>=6.0.0",
+    "pytest>=8.3.4",
+    "ruff>=0.8.2",
+    "python-multipart>=0.0.19",
+    "debugpy>=1.8.9",
+    "numpy>=1.21.2",
+
+    # ads communication with beckhoff
+    "pyads>=3.4.2",
+]
+
+[tool.uv.sources]
+
+# Building and Testing
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+packages = ["src/clay_printing"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clay_printing"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=clay_printing"
+pythonpath = [
+    "src"
+]
+
+# Linting and Formatting
+[tool.ruff]
+line-length = 120
+indent-width = 2
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "RUF", # ruff-specific rules
+]
+
+ignore = [
+    "D417",  # Missing argument descriptions in the docstring
+    "D107",  # Missing docstring in __init__
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["clay_printing"]
+known-third-party = ["numpy"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
