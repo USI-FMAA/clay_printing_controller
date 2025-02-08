@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="P_CP1_Enable" Id="{68a8a0e1-4cfb-45cb-84fa-cea5ba2e3ddd}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_CP1_Enable
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="P_CP1_Enable">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

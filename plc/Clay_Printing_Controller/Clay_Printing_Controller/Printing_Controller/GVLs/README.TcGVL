@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <GVL Name="README" Id="{323cccd0-94c1-445f-830c-f2af6b81bf72}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  README
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+VAR_GLOBAL
+(*
+Set the IP with 192.168.30.11 
+
+
+File description 
+GVL(GVL : Global variables)
+GVL_IO(GVL_IO : IO)
+GVL_PN(GVL_PN : Profinet Array)
+GVL_RED(GVL_research : variables for control via laptop)
+GVL_ROB(GVL_research : variables for control via Robot)
+
+
+Data Type Prefix
+ib = Input Bool   / ob = Output Bool
+if = Input float  / of = Output float (REAL, LREAL)
+in = Input numeric/ on = Output numeric 
+(INT, SINT, USINT, UNIT, DINT, UDINT, BYTE, WORD, DWORD, LWORD, XINT, UXINT, XWORD) 
+t = Time (TON)
+s = String
+
+
+Naming Shortcuts
+CC1 = Concrete Controller 
+AP1 = Admixture pump, High dosage ViscoTech Pump (Xseed or Accelerator)
+CP1 = Concrete Pump
+SP1 = Admixture pump, Low dosage ViscoTech Pump  (Xseed or Accelerator or Superplasticizer)
+
+PP1 = Peristaltic Pump
+MI1 = Mixer
+RED = Research Data
+PN = Profinet with Roboter
+
+*)
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

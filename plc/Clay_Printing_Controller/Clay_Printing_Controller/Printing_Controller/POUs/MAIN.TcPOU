@@ -25,6 +25,8 @@ END_VAR
 
 // Control Mode select 
 P_Control_Mode();
+
+
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
@@ -38,7 +40,10 @@ P_Control_Mode();
       <LineId Id="15" Count="4" />
       <LineId Id="24" Count="1" />
       <LineId Id="2" Count="0" />
-      <LineId Id="26" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="27" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
