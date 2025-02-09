@@ -3,10 +3,146 @@
   <POU Name="P_Laptop_Operate" Id="{900ed715-74f5-4bfb-958b-6045f4772707}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_Laptop_Operate
 VAR
+	SafetyReset 	: bool;
+	b_Enable		: BOOL;
+	b_Reset			: BOOL;
+
+	fb_SetOutputDataToIO : FB_SetOutputDataToIO;
+	fb_getOutputData : FB_GetOutputData;
+	fb_setConfig : FB_SetConfigData;
+
+	b_Safety_Reset : BOOL;
+	b_Timer_Rest : BOOL;
+	t_CC1_Time_Safety_Rest : TIME :=T#5S; //wait 5s for controller restart
+	fb_CC1_Trigger_Safety_On : R_TRIG;
+	fb_CC1_Trigger_Safety_Off : R_TRIG;
+	fb_CC1_Timer_Safety: TON;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[
+// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Control mode selection
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+b_Timer_Rest:=GVL_RESD.b_Concrete_Controller_reset;
+
+// Controller reset trigger
+fb_CC1_Timer_Safety(
+					IN:=b_Timer_Rest,
+					PT:=t_CC1_Time_Safety_Rest);
+
+fb_CC1_Trigger_Safety_On(clk:=fb_CC1_Timer_Safety.IN);
+fb_CC1_Trigger_Safety_Off(clk:=fb_CC1_Timer_Safety.Q);
+//b_Safety_Reset:=FALSE;
+IF fb_CC1_Trigger_Safety_On.Q THEN
+	b_Safety_Reset:=TRUE;
+END_IF
+IF fb_CC1_Trigger_Safety_Off.Q THEN
+	b_Safety_Reset:=FALSE;
+	GVL_RESD.b_Concrete_Controller_reset:=FALSE;
+END_IF
+GVL_IO.ob_CC1_Safety_Reset:= b_Safety_Reset OR GVL_IO.ib_CC1_Button_Reset;
+
+// Concrete Controller enable
+P_CC1_Enable( b_set_run:= GVL_RESD.b_Concrete_Controller_enable );
+
+
+//***********************************************************************************
+// Set Process Configuration
+//***********************************************************************************
+
+fb_setConfig(
+// Geneal
+// Concrete Controller
+
+// Concrete Pump
+_f_CP1_Max_Flowrate   := INT_TO_REAL(GVL_RESD.n_Concrete_Pump_Max_Speed) * GVL_RESD.f_Concrete_Pump_dosing_volume,
+_f_CP1_Check_Flowrate := GVL_RESD.f_Concrete_Pump_Check_Flowrate,
+_t_CP1_Check_Duration := INT_TO_TIME(GVL_RESD.n_Concrete_Pump_Check_Duration)*1000,
+
+);
+
+//***********************************************************************************
+// Setup IO data to PLC
+//***********************************************************************************
+fb_SetOutputDataToIO(
+
+	// Concrete Pump
+	b_CP1_Forward_On       := GVL_RESD.b_Concrete_Pump_Forward_On,
+	b_CP1_Backward_On      := GVL_RESD.b_Concrete_Pump_Backward_On,
+	b_CP1_Flush_On         := GVL_RESD.b_Concrete_Pump_Flush_On,
+	b_CP1_Check_On         := GVL_RESD.b_Concrete_Pump_Check_On,
+	n_CP_Flowrate_mode     := TRUE,
+	n_CP1_Operate_Flowrate := REAL_TO_UDINT(GVL_RESD.f_Concrete_Pump_Set_Flowrate*100),
+	n_CP1_Check_Flowrate   := REAL_TO_UDINT(GVL_RESD.f_Concrete_Pump_Check_Flowrate*100),
+	n_CP1_Flush_Flowrate   := REAL_TO_UDINT(GVL_RESD.n_Concrete_Pump_Flush_Flowrate*100),
+	f_dosing_volume        := real_to_int(gvl_resd.f_concrete_pump_dosing_volume*100),
+	n_cp1_max_speed        := GVL_RESD.n_concrete_pump_max_speed,
+	n_cp1_target_speed     := GVL_RESD.n_concrete_pump_set_speed,
+
+	);
+
+
+//***********************************************************************************
+// Concrete Pump
+//***********************************************************************************
+
+// concrete pump power control is from pump itself
+P_CP1_Enable();
+P_CP1_Check(b_set_run := fb_SetOutputDataToIO.b_CP1_Forward_On,
+			b_check_mode_on := fb_SetOutputDataToIO.b_CP1_Check_On,
+			t_check_duration := fb_setConfig._t_CP1_Check_Duration,
+			);
+
+
+//***********************************************************************************
+// Other Pump
+//***********************************************************************************
+
+// Put Other pump control here
+
+
+//***********************************************************************************
+// Get out put data from PLC
+//***********************************************************************************
+fb_getOutputData(
+
+	//CC1
+	b_mode_manual := GVL_RESD.b_Operate_mode_manual,
+	b_mode_laptop := GVL_RESD.b_Operate_mode_laptop,
+	b_mode_robot := GVL_RESD.b_Operate_mode_robot,
+	b_CC1_power_on := GVL_RESD.b_Concrete_Controller_power_on,
+	n_current_mode := GVL_RESD.n_Concrete_Controller_current_mode,
+
+	//CP1
+	b_CP1_is_run := GVL_RESD.b_CP1_is_run,
+	b_CP1_is_ready := GVL_RESD.b_CP1_is_ready,
+
+	b_CP1_is_ready := GVL_ROB.ob_CP1_is_ready,
+	b_CP1_power_on := GVL_ROB.ob_CP1_power_on,
+	b_CP1_safety_grid_on := GVL_ROB.ob_CP1_safety_grid_on,
+	b_CP1_drive_error := GVL_ROB.ob_CP1_drive_error,
+
+	f_CP1_status_temperature_concrete_fresh := GVL_RESD.f_CP1_status_temperature_concrete_fresh,
+	f_CP1_status_temperature_Concrete_pump := GVL_RESD.f_CP1_status_temperature_Concrete_pump,
+	f_CP1_status_pressure_Concrete_pump := GVL_RESD.f_CP1_status_pressure_Concrete_pump,
+
+);
+
+      ]]></ST>
     </Implementation>
     <LineIds Name="P_Laptop_Operate">
       <LineId Id="5" Count="0" />

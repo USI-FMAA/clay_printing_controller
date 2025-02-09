@@ -11,11 +11,11 @@ END_VAR
 //
 // USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
 // ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
-// 
+//
 // ***********************************************************************************
-// 
+//
 // PROJECT     :  Clay Printing Controller
-// FUNCTION    :  Main 
+// FUNCTION    :  Main
 // AUTHOR      :  WeiTing Chen
 // EMAIL       :  chen@mesh.ch
 // Copyright   :  USI FMAA Mendrisio(CH) 2025
@@ -23,9 +23,18 @@ END_VAR
 // ***********************************************************************************
 
 
-// Control Mode select 
+// Control Mode select
 P_Control_Mode();
 
+// Operation Mode select
+// TODO: Implementation of the operation mode. Now everything services as laptop mode.
+IF GVL.b_mode_laptop THEN
+	P_Laptop_Operate();
+ELSIF GVL.b_mode_robot THEN
+	P_Laptop_Operate();
+ELSIF GVL.b_mode_manual THEN
+	P_Laptop_Operate();
+END_IF
 
 ]]></ST>
     </Implementation>
