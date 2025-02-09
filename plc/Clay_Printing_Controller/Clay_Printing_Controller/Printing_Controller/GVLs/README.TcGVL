@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <GVL Name="README" Id="{323cccd0-94c1-445f-830c-f2af6b81bf72}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
@@ -19,7 +19,7 @@
 
 VAR_GLOBAL
 (*
-Set the IP with 192.168.XX.XX
+Set the IP with XXXXXXXX
 
 File description
 GVL(GVL : Global variables)
