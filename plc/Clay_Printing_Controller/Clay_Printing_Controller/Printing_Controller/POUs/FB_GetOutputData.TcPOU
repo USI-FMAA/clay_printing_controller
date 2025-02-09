@@ -22,10 +22,9 @@ VAR_IN_OUT
 	b_CP1_safety_grid_on : BOOL;
 	b_CP1_drive_error :BOOL;
 
-	f_CP1_status_temperature_concrete_fresh : REAL; // [°C]
-	f_CP1_status_temperature_Concrete_pump : REAL; // [°C]
-	f_CP1_status_pressure_Concrete_pump: REAL; // [bar]
-
+	f_CP1_status_torque : REAL;
+	f_CP1_status_speed : REAL;
+	
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -86,14 +85,20 @@ b_CP1_drive_error := GVL.b_CP1_drive_error;
 
 // Torque
 // TODO: make it from actual speed value.
-// f_CP1_status_torque := (INT_TO_REAL(GVL_IO.in_Torque_CPump)/32767)*100;
 
-//Temperature
-pass
-//Pressure
-pass
+IF b_Output_number_REALMode THEN
+	f_CP1_status_torque := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed)*0.1;
+	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed)*0.1;
 
+ELSE
+	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed);
+	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed);
+END_IF
 
+// Temperature
+// pass
+// Pressure
+// pass
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_GetOutputData">
@@ -101,8 +106,15 @@ pass
       <LineId Id="54" Count="0" />
       <LineId Id="179" Count="0" />
       <LineId Id="178" Count="0" />
-      <LineId Id="55" Count="109" />
-      <LineId Id="5" Count="0" />
+      <LineId Id="55" Count="36" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="186" Count="1" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="188" Count="3" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="94" Count="3" />
+      <LineId Id="100" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

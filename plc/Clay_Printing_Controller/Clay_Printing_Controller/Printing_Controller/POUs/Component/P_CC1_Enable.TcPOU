@@ -1,25 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
-  <POU Name="P_CP1_Check" Id="{6176801c-fa9a-48a4-9f5e-14dd91aa3a80}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM P_CP1_Check
+  <POU Name="P_CC1_Enable" Id="{10715050-2c0c-4f98-b138-b9b213f9c361}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_CC1_Enable
 VAR_INPUT
 	n_Step: INT := 0;	
 	b_set_run : BOOL;
-	b_check_mode_on : BOOL;
-	t_check_duration :TIME;
 END_VAR
 VAR
 	//
 	// BOOL 
 	b_Condition: BOOL;
 	b_No_Emergency_Stop:BOOL :=TRUE;
-	
-	//
-	// Timer 
-	t_CP1_Check_Time: TON;
-	//
-	t_CP1_Puls_Enable: TON;	
-	t_CP1_Puls_Disable: TON;	
 	
 END_VAR
 ]]></Declaration>
@@ -32,13 +23,14 @@ END_VAR
 // ***********************************************************************************
 //
 // PROJECT     :  Clay Printing Controller
-// FUNCTION    :  Step chain for concrete pump calibartion
+// FUNCTION    :  Step chain for controller enable
 // AUTHOR      :  WeiTing Chen
 // EMAIL       :  chen@mesh.ch
 // Copyright   :  USI FMAA Mendrisio(CH) 2025
 //
 // ***********************************************************************************
 
+//
 // Ignore emergency stop
 b_No_Emergency_Stop:=TRUE;
 
@@ -57,11 +49,11 @@ IF n_Step=0 THEN
 END_IF
 
 //
-// Check grid mounted and no errors and the check mode on 
+// Wait for start
 IF n_Step=10 THEN
 	//
 	// Check condition 
-	b_Condition:= GVL_IO.ib_CP1_Ready AND GVL_IO.ib_CP1_Safety_Grid_Mounted AND NOT GVL_IO.ib_CP1_Drive_Error;
+	b_Condition:= GVL_IO.ib_CC1_Safety_Ready AND b_set_run;
 	//
 	// Do step
 	IF b_Condition AND b_No_Emergency_Stop THEN
@@ -71,39 +63,25 @@ IF n_Step=10 THEN
 END_IF
 
 //
-// Send enable to pump and wait for start 
+// Reserve
 IF n_Step=20 THEN
 	//
 	// Check condition 
-	b_Condition:= b_check_mode_on AND b_set_run;
+	b_Condition:=TRUE;
 	//
 	// Do step
 	IF b_Condition AND b_No_Emergency_Stop THEN
-		b_Condition:=FALSE;
-		n_Step:=25;
-	END_IF
-END_IF
-
-//
-// Pump enabled checking for errors or grid removed
-IF n_Step=25 THEN
-	//
-	// Check condition 
-	b_Condition:= t_CP1_Check_Time.Q;
-	//
-	// Do step
-	IF b_Condition THEN
 		b_Condition:=FALSE;
 		n_Step:=30;
 	END_IF
 END_IF
 
 //
-// Pump enabled checking for errors or grid removed
+// Run 
 IF n_Step=30 THEN
 	//
 	// Check condition 
-	b_Condition:= TRUE;
+	b_Condition:= NOT GVL_IO.ib_CC1_Safety_Ready OR NOT b_set_run;
 	//
 	// Do step
 	IF b_Condition THEN
@@ -113,7 +91,7 @@ IF n_Step=30 THEN
 END_IF
 
 //
-// 
+//
 IF n_Step=40 THEN
 	//
 	// Check condition 
@@ -135,37 +113,20 @@ IF n_Step=50 THEN
 	//
 	// Do step
 	IF b_Condition THEN
-		//
-		//Reset 
-		b_set_run:=FALSE;
-		b_check_mode_on:=FALSE;
+		
 		b_Condition:=FALSE;
 		n_Step:=10;
 	END_IF
 END_IF
 
-// ****************************************
-// Timer
-// ****************************************
-t_CP1_Check_Time(
-	IN:=n_Step=25,
-	PT:=t_check_duration);
-
-// ****************************************
-// Reset
-// ****************************************
-IF NOT b_check_mode_on THEN
-  //
-  // Rest step chain
-  n_Step:=0;
-END_IF
-]]></ST>
+//
+// Mixer run
+GVL.b_CC1_power_on:=n_Step=30;]]></ST>
     </Implementation>
-    <LineIds Name="P_CP1_Check">
-      <LineId Id="149" Count="12" />
-      <LineId Id="148" Count="0" />
-      <LineId Id="162" Count="0" />
-      <LineId Id="28" Count="119" />
+    <LineIds Name="P_CC1_Enable">
+      <LineId Id="109" Count="12" />
+      <LineId Id="107" Count="1" />
+      <LineId Id="16" Count="90" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

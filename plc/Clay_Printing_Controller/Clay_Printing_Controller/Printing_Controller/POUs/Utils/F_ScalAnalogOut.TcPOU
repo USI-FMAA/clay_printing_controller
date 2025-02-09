@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="F_ScalAnalogOut" Id="{9cbfc369-02c4-4c09-8403-83905e0202a0}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_ScalAnalogOut
+    <Declaration><![CDATA[FUNCTION F_ScalAnalogOut :INT
 VAR_INPUT
 	n_Input:UDINT;
 	n_InMin:UDINT;

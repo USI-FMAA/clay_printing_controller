@@ -6,7 +6,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[//No implements]]></ST>
     </Implementation>
     <LineIds Name="P_Robot_Operate">
       <LineId Id="5" Count="0" />

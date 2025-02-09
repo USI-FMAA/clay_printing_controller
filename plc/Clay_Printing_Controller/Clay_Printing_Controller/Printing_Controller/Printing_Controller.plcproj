@@ -37,6 +37,9 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Component\P_CC1_Enable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Component\P_CP1_Check.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -44,9 +47,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_SetConfigData.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Func\F_ScalAnalogOut.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_GetOutputData.TcPOU">
@@ -65,6 +65,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\P_Robot_Operate.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utils\F_LowpassFilter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utils\F_ScalAnalogOut.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

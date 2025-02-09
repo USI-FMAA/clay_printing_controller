@@ -2,13 +2,142 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="P_CP1_Enable" Id="{68a8a0e1-4cfb-45cb-84fa-cea5ba2e3ddd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_CP1_Enable
+VAR_INPUT
+	// INT 
+	n_Step: INT := 0;	
+END_VAR
 VAR
+	// BOOL 
+	b_Condition: BOOL;
+	b_No_Emergency_Stop:BOOL :=TRUE;
+
+	//
+	// Timer 
+	t_CP1_Puls_Enable: TON;	
+	t_CP1_Puls_Disable: TON;	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Step chain for concrete pump enable
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+// Ignore emergency stop
+b_No_Emergency_Stop:=TRUE;
+
+//
+// Initalization
+IF n_Step=0 THEN
+	//
+	// Check condition 
+	b_Condition:=TRUE;
+	//
+	// Do step
+	IF b_Condition THEN
+		b_Condition:=FALSE;
+		n_Step:=10;
+	END_IF
+END_IF
+
+//
+// Check grid mounted and no errors 
+IF n_Step=10 THEN
+	//
+	// Check condition 
+	b_Condition:= GVL_IO.ib_CP1_Safety_Grid_Mounted AND NOT GVL_IO.ib_CP1_Drive_Error;
+	//
+	// Do step
+	IF b_Condition AND b_No_Emergency_Stop THEN
+		b_Condition:=FALSE;
+		n_Step:=20;
+	END_IF
+END_IF
+
+//
+// Send enable to pump
+IF n_Step=20 THEN
+	//
+	// Check condition 
+	b_Condition:=t_CP1_Puls_Enable.Q;
+	//
+	// Do step
+	IF b_Condition AND b_No_Emergency_Stop THEN
+		b_Condition:=FALSE;
+		n_Step:=30;
+	END_IF
+END_IF
+
+//
+// Pump enabled checking for errors or grid removed
+IF n_Step=30 THEN
+	//
+	// Check condition 
+	b_Condition:= NOT GVL_IO.ib_CP1_Safety_Grid_Mounted OR GVL_IO.ib_CP1_Drive_Error;
+	//
+	// Do step
+	IF b_Condition THEN
+		b_Condition:=FALSE;
+		n_Step:=40;
+	END_IF
+END_IF
+
+//
+// Send disable to pump
+IF n_Step=40 THEN
+	//
+	// Check condition 
+	b_Condition:=t_CP1_Puls_Disable.Q;
+	//
+	// Do step
+	IF b_Condition AND b_No_Emergency_Stop THEN
+		b_Condition:=FALSE;
+		n_Step:=50;
+	END_IF
+END_IF
+
+//
+// Return to step 10 
+IF n_Step=50 THEN
+	//
+	// Check condition 
+	b_Condition:=TRUE;
+	//
+	// Do step
+	IF b_Condition THEN
+		b_Condition:=FALSE;
+		n_Step:=10;
+	END_IF
+END_IF
+
+// ****************************************
+// Timer
+// ****************************************
+t_CP1_Puls_Enable(
+	IN:=n_Step=20,
+	PT:=T#200MS);
+
+t_CP1_Puls_Disable(
+	IN:=n_Step=40,
+	PT:=T#200MS);
+]]></ST>
     </Implementation>
     <LineIds Name="P_CP1_Enable">
+      <LineId Id="121" Count="12" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="23" Count="96" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
