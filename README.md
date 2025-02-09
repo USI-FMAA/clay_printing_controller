@@ -37,6 +37,8 @@ uv pip install -e .
 * `robot`: the folder for the robot control.
 * `script`: the example script for controlling Beckhoff controller via Python script.
 
+> [!NOTE]
+> The controller program class diagram coming soon.
 
 ## Credits
 Author: [Wei-Ting Chen]

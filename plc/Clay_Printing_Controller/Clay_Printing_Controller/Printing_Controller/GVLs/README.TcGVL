@@ -19,35 +19,24 @@
 
 VAR_GLOBAL
 (*
-Set the IP with 192.168.30.11 
+Set the IP with 192.168.XX.XX
 
-
-File description 
+File description
 GVL(GVL : Global variables)
 GVL_IO(GVL_IO : IO)
-GVL_PN(GVL_PN : Profinet Array)
-GVL_RED(GVL_research : variables for control via laptop)
-GVL_ROB(GVL_research : variables for control via Robot)
-
+GVL_LAP(GVL_LAP : variables for control via laptop)
 
 Data Type Prefix
 ib = Input Bool   / ob = Output Bool
 if = Input float  / of = Output float (REAL, LREAL)
-in = Input numeric/ on = Output numeric 
-(INT, SINT, USINT, UNIT, DINT, UDINT, BYTE, WORD, DWORD, LWORD, XINT, UXINT, XWORD) 
+in = Input numeric/ on = Output numeric
+(INT, SINT, USINT, UNIT, DINT, UDINT, BYTE, WORD, DWORD, LWORD, XINT, UXINT, XWORD)
 t = Time (TON)
 s = String
 
-
 Naming Shortcuts
-CC1 = Concrete Controller 
-AP1 = Admixture pump, High dosage ViscoTech Pump (Xseed or Accelerator)
+CC1 = Concrete Controller
 CP1 = Concrete Pump
-SP1 = Admixture pump, Low dosage ViscoTech Pump  (Xseed or Accelerator or Superplasticizer)
-
-PP1 = Peristaltic Pump
-MI1 = Mixer
-RED = Research Data
 PN = Profinet with Roboter
 
 *)

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_SetConfigData" Id="{ef32789c-5a3e-49b6-b039-b2a5039f42d1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SetConfigData
+VAR_INPUT
+	// Gerenal
+	// Concrete Controller
+
+	// Concrete Pump
+	_f_CP1_Max_Flowrate : REAL;
+	_f_CP1_Check_Flowrate : REAL;
+	_t_CP1_Check_Duration : TIME;
+
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Set all default/constant data for the process (Custom function block)
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+// Setter for the components Config
+// Concrete Controller (CC1)
+
+// Concrete Pump 1
+GVL.f_CP1_Max_Flowrate := _f_CP1_Max_Flowrate;
+GVL.f_CP1_Check_Flowrate := _f_CP1_Check_Flowrate;
+GVL.t_CP1_Check_Duration := _t_CP1_Check_Duration;
+GVL.n_CP1_Flush_Flowrate := (_f_CP1_Max_Flowrate) / 2;
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SetConfigData">
+      <LineId Id="62" Count="12" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="39" Count="21" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

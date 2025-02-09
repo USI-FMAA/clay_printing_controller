@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <GVL Name="GVL_LAP" Id="{40bda2c8-0c06-4957-8ff4-3464646b46f0}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+
+// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Global Laptop IO wrapper
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+VAR_GLOBAL
+CONCRETE_CONTROLLER: STRING := 'Controller'; //*****
+b_Operate_mode_manual             : BOOL;
+b_Operate_mode_laptop             : BOOL;
+b_Operate_mode_robot              : BOOL;
+b_Concrete_Controller_enable      : BOOL;
+b_Concrete_Controller_reset       : BOOL;
+b_Concrete_Controller_power_on    : BOOL;
+n_Concrete_Controller_current_mode: INT;
+
+CONCRETE_PUMP: STRING := 'CONCRETE_PUMP'; //*****
+// Concrete Pump
+// input
+b_Concrete_Pump_Power_On   : BOOL;  // Power On
+b_Concrete_Pump_Forward_On : BOOL;  // Forward ON
+b_Concrete_Pump_Backward_On: BOOL;  // Backward ON
+
+b_Concrete_Pump_Flush_On      : BOOL;  // FLUSH MODE ON
+n_Concrete_Pump_Flush_Flowrate: REAL;  // READ [l/min]
+
+b_Concrete_Pump_Check_On      : BOOL;       // CHECK MODE ON
+
+// TODO: Need to check the range of flowrate
+
+f_Concrete_Pump_Check_Flowrate: REAL;       // [O tp 24 l/min]
+n_Concrete_Pump_Check_Duration: INT := 15;  // [s]
+
+f_Concrete_Pump_Set_Flowrate : REAL;          // [0 to 24 l/min]
+f_Concrete_Pump_dosing_volume: REAL := 0.32;  // calibrated XXXXX
+n_Concrete_Pump_Max_Speed    : INT := 75;     // calibrated XXXXX
+n_Concrete_Pump_Set_Speed    : INT;           // WRITE VALUE From 0 to 75 [rpm]
+
+b_CP1_is_run        : BOOL;
+b_CP1_is_ready      : BOOL;
+b_CP1_power_on      : BOOL;
+b_CP1_safety_grid_on: BOOL;
+b_CP1_drive_error   : BOOL;
+
+// Other
+Admixture_Pump_1: STRING := 'Admixture Pump (AP1)'; //*****
+
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

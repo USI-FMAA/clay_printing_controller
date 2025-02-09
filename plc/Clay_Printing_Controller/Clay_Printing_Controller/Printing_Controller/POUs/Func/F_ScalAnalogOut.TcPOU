@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="F_ScalAnalogOut" Id="{9cbfc369-02c4-4c09-8403-83905e0202a0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_ScalAnalogOut
+VAR_INPUT
+	n_Input:UDINT;
+	n_InMin:UDINT;
+	n_InMax:UDINT;
+	n_OutMin:UDINT;
+	n_OutMax:UDINT;
+
+END_VAR
+VAR
+	f_Input:REAL;
+	f_InMin:REAL;
+	f_InMax:REAL;
+	f_OutMin:REAL;
+	f_OutMax:REAL;
+	f_DeltaIn:REAL;
+	f_DeltaOut:REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Func scale analogue output
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+//
+// Check plausibility 
+
+IF f_Input > f_InMax THEN
+	f_Input := f_InMax;
+END_IF
+
+IF f_InMax = f_InMin THEN	
+	//
+	// Not plausible output fix value
+	F_ScalAnalogOut := 0;
+ELSE
+	// Check the input data is lager than maximum
+	IF f_Input > f_InMax THEN
+		f_Input := f_InMax;
+	END_IF
+	//
+	// Plausible calculate output 
+	f_DeltaIn:=f_InMax-f_InMin;
+	f_DeltaOut:=f_OutMax-f_OutMin;
+	F_ScalAnalogOut :=REAL_TO_INT((f_DeltaOut/f_DeltaIn)*(f_Input-f_InMin));	
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="F_ScalAnalogOut">
+      <LineId Id="49" Count="12" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="27" Count="20" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

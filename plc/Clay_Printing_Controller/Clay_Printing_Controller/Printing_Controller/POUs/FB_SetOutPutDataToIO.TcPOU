@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_SetOutPutDataToIO" Id="{24b6cfd3-2d5e-4a32-81f3-a3249bbef857}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK  FB_SetOutPutDataToIO
+VAR_INPUT
+
+	// Concrete Pump
+	b_CP1_Forward_On : BOOL;
+	b_CP1_Backward_On : BOOL;
+	b_CP1_Flush_On :BOOL;
+	b_CP1_Check_On : BOOL;
+	n_CP_Flowrate_mode : BOOL;
+	n_CP1_Operate_Flowrate : UDINT;
+	n_CP1_Check_Flowrate : UDINT;
+	n_CP1_Flush_Flowrate : UDINT;
+	f_dosing_volume:INT;
+
+	n_CP1_max_speed : INT;  // rpm
+	n_CP1_target_speed: INT; // rpm
+
+	// Example for AP1
+	(*
+	b_AP1_Power_On : BOOL;
+	b_AP1_Run : BOOL;
+	b_AP1_Flush_On :BOOL;
+	b_AP1_Check_On :BOOL;
+
+	n_AP1_Flowrate_mode : BOOL;
+	n_AP1_Max_Flowrate : INT;
+	n_AP1_Operate_Flowrate : UDINT;
+	n_AP1_Check_Flowrate : UDINT;
+	n_AP1_Flush_Flowrate : UDINT;
+	n_AP1_Dosing_factor : INT;
+	*)
+
+
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// Condition
+	_n_temp_flowrate_CP1 : UDINT;
+	_n_temp_speed_CP1: INT;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// ***********************************************************************************
+//
+// USI Mendrisio, Largo Bernasconi 2, CH-6850 Mendrisio
+// ETH Zurich, Building HIF E26, Laura-Hezner-Weg 7, CH-8093 Zürich
+//
+// ***********************************************************************************
+//
+// PROJECT     :  Clay Printing Controller
+// FUNCTION    :  Set data to IO and process (Custom function block)
+// AUTHOR      :  WeiTing Chen
+// EMAIL       :  chen@mesh.ch
+// Copyright   :  USI FMAA Mendrisio(CH) 2025
+//
+// ***********************************************************************************
+
+
+// ***********************************************************************************
+// Concrete Pump 1
+// ***********************************************************************************
+
+
+// Start
+IF  P_CP1_Enable.n_Step=20 THEN
+	GVL_IO.ob_CP1_Start:=TRUE;
+ELSE
+	GVL_IO.ob_CP1_Start:=FALSE;
+END_IF
+
+// Stop
+IF  P_CP1_Enable.n_Step=40 THEN
+	GVL_IO.ob_CP1_Stop:=TRUE;
+ELSE
+	GVL_IO.ob_CP1_Stop:=FALSE;
+END_IF
+
+GVL_IO.ob_CP1_Forward := b_CP1_Forward_On; // Forward
+GVL_IO.ob_CP1_Backward := b_CP1_Backward_On; // Backward
+
+// Set speed for pump
+IF b_CP1_Flush_On THEN
+	//
+	// Process speed for flushing or filling the pipe
+	 _n_temp_flowrate_CP1:=n_CP1_Flush_Flowrate;
+ELSIF P_CP1_Check.n_Step=20 OR P_CP1_Check.n_Step=25 THEN
+	//
+	// Check Flowrate for pump
+	_n_temp_flowrate_CP1 :=n_CP1_Check_Flowrate;
+ELSE
+	//
+	// Process speed for pump
+	_n_temp_flowrate_CP1 :=n_CP1_Operate_Flowrate;
+END_IF
+
+
+// Concrete pump speed  0 (0V) to 75 rpm (10V)
+IF NOT n_CP_Flowrate_mode THEN
+	// set from rpm
+	GVL_IO.on_CP1_Speed:=F_ScalAnalogOut(
+		n_Input:= INT_TO_UDINT(n_CP1_target_speed),
+		n_InMin:= 0,
+		n_InMax:= INT_TO_UDINT(n_CP1_max_speed),
+		n_OutMin:= 0,
+		n_OutMax:= 32767);
+ELSE
+	// set from flowrate
+	GVL_IO.on_CP1_Speed:=F_ScalAnalogOut(
+		n_Input:= _n_temp_flowrate_CP1,
+		n_InMin:= 0,
+		n_InMax:= INT_TO_UDINT(n_CP1_max_speed*f_dosing_volume),
+		n_OutMin:= 0,
+		n_OutMax:= 32767);
+END_IF
+
+
+//***********************************************************************************
+// Other Pump
+//***********************************************************************************
+
+	]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SetOutPutDataToIO">
+      <LineId Id="295" Count="14" />
+      <LineId Id="116" Count="63" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

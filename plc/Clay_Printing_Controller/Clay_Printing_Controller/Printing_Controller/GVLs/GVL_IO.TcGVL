@@ -23,10 +23,10 @@ VAR_GLOBAL
 	// ***** HARDWARE INPUT ******
 
 	// Concrete Controller 1
-	ib_CC1_Safety_Ready       AT %I*: BOOL;  // DI1
-	ib_CC1_Button_Mode_Manual AT %I*: BOOL;  // DI6
-	ib_CC1_Button_Mode_Laptop AT %I*: BOOL;  // DI8
-	ib_CC1_Button_Reset       AT %I*: BOOL;  // DI7
+	ib_CC1_Safety_Ready        AT %I*: BOOL;  // DI1
+	ib_CC1_Button_Mode_Manual  AT %I*: BOOL;  // DI6
+	ib_CC1_Button_Mode_Laptop  AT %I*: BOOL;  // DI8
+	ib_CC1_Button_Reset        AT %I*: BOOL;  // DI7
 
 	// Concrete Pump 1
 	ib_CP1_Safety_Grid_Mounted AT %I*: BOOL;  // DI2
