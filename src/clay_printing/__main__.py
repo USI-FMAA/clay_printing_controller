@@ -5,8 +5,8 @@ from datetime import datetime
 """Global value"""
 
 #TODO: change it
-CLIENT_ID = "5.57.158.168.1.1"  # PLC AMSNETID
-CLIENT_IP = "192.168.30.11"
+CLIENT_ID = "5.151.68.134.1.1"  # PLC AMSNETID
+CLIENT_IP = "169.254.200.9" # PLC IP
 NOW_DATE = datetime.now().date().strftime("%Y%m%d")  # Date
 
 # =================================================================================

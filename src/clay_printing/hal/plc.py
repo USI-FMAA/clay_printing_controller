@@ -1,3 +1,4 @@
+"""Hardware abstraction layer for PLC communication."""
 import pyads
 from pydantic import BaseModel, Field
 from typing import List, Any
