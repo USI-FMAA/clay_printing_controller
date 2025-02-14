@@ -2,6 +2,8 @@
 ## Steps
 In TwinCAT, the entry file for control the controller parameter is `GVL_LAP`.
 
+![alt text](./docs/image/plc_var_control.png)
+
 - Concrete controller enable : enable the controller
 - Concrete pump forward On
 - Set concrete pump speed
