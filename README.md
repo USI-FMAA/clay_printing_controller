@@ -35,7 +35,7 @@ uv run /src/clay_printing/main.py
 ```
 
 
-We also can change to `venv`, just I use `uv`.
+We also can change to `venv`, but recommend to use `uv`.
 
 ``` bash
 python3 -m venv .venv
@@ -44,17 +44,17 @@ pip install -e .
 ```
 
 ## Package Information
-> [!NOTE]
+> [!IMPORTANT]
 > This is an initial repo structure, feel free to change it.
 
 * `plc`: the TwinCAT project for the PLC controller.
 * `robot`: the folder for the robot control.
 * `script`: the example script for controlling Beckhoff controller via Python script.
+- folder structure
+![alt text](./docs/image/folder_structure.png)
 
 > [!NOTE]
 > The controller program class diagram is coming soon.
-
-![alt text](./docs/image/folder_structure.png)
 
 ## Credits
 Author: [Wei-Ting Chen]
