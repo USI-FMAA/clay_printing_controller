@@ -2,7 +2,7 @@ from datetime import datetime
 
 from loguru import logger
 
-from .hal.plc import PLC
+from clay_printing.hal.plc import PLC
 
 # =================================================================================
 """Global value"""
@@ -20,15 +20,15 @@ NOW_DATE = datetime.now().date().strftime("%Y%m%d")  # Date
 def main():
   """Main function to run the process."""
 
-  plc = PLC(netid=CLIENT_ID, ip=CLIENT_IP)
-  plc.connect()
+  # plc = PLC(netid=CLIENT_ID, ip=CLIENT_IP)
+  # plc.connect()
   logger.info("The process is running.")
   logger.info(f"Data:{NOW_DATE}")
 
-  plc.read_variables("GVL_LAP.f_CP1_status_torque")
+  # plc.read_variables("GVL_LAP.f_CP1_status_torque")
   # plc.write_variables("GVL_LAP.n_Concrete_Pump_Set_Speed", 30)
 
-  plc.close()
+  # plc.close()
   logger.info("the process closed.")
 
 # TODO: Implement the process to run the process.

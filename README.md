@@ -28,8 +28,14 @@ uv venv --python 3.12
 source venv/bin/activate
 uv pip install -e .
 ```
+Run the main script
 
-we also can change to `venv`, just I use `uv`.
+``` bash
+uv run /src/clay_printing/main.py
+```
+
+
+We also can change to `venv`, just I use `uv`.
 
 ``` bash
 python3 -m venv .venv
@@ -47,6 +53,8 @@ pip install -e .
 
 > [!NOTE]
 > The controller program class diagram coming soon.
+
+![folder structure](./docs/folder_structure.png)
 
 ## Credits
 Author: [Wei-Ting Chen]
