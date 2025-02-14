@@ -22,7 +22,7 @@ Also, Check more information for reference from previous project [DCS Controller
 #### Development environment
 
 Create a virtual environment
-we also can change to pyvenv, just I use uv.
+we also can change to `venv`, just I use `uv`.
 
 ``` bash
 uv venv --python 3.12
