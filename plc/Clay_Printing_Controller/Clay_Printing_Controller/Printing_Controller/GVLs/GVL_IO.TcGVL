@@ -23,17 +23,18 @@ VAR_GLOBAL
 	// ***** HARDWARE INPUT ******
 
 	// Concrete Controller 1
-	ib_CC1_Safety_Ready_NOT_IMP        AT %I*: BOOL;  // DI1
+	// This once install the safety gate, we can start to do read from it.
+	ib_CC1_Safety_Ready_NOT_IMP AT %I*: BOOL;  // DI1
 	ib_CC1_Safety_Ready:BOOL;
-	ib_CC1_Button_Mode_Manual  AT %I*: BOOL;  // DI6
-	ib_CC1_Button_Mode_Laptop  AT %I*: BOOL;  // DI8
-	ib_CC1_Button_Reset        AT %I*: BOOL;  // DI7
+	ib_CC1_Button_Mode_Manual   AT %I*: BOOL;  // DI6
+	ib_CC1_Button_Mode_Laptop   AT %I*: BOOL;  // DI8
+	ib_CC1_Button_Reset         AT %I*: BOOL;  // DI7
 
 	// Concrete Pump 1
-	ib_CP1_Safety_Grid_Mounted AT %I*: BOOL;  // DI2
-	ib_CP1_Ready               AT %I*: BOOL;  // DI3
-	ib_CP1_Drive_Error         AT %I*: BOOL;  // DI4
-	ib_CP1_Actual_Speed        AT %I*: INT;   // AI1
+	ib_CP1_Safety_Grid_Mounted  AT %I*: BOOL;  // DI2
+	ib_CP1_Ready                AT %I*: BOOL;  // DI3
+	ib_CP1_Drive_Error          AT %I*: BOOL;  // DI4
+	ib_CP1_Actual_Speed         AT %I*: INT;   // AI1
 
 	// Spare Slot
 	ibSpare1 AT %I*: BOOL;  //DI5
@@ -53,6 +54,7 @@ VAR_GLOBAL
 	ob_CP1_Forward  AT %Q*: BOOL;  //DO4
 	ob_CP1_Backward AT %Q*: BOOL;  //DO5
 	on_CP1_Speed    AT %Q*: INT;   //AO1
+	// just for testing, if not working after we can delete it.
 	on_CP1_Speed_test    AT %Q*: INT;   //AOTemp
 
 	// Spare Slot

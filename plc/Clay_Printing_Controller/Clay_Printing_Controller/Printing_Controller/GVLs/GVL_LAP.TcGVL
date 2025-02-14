@@ -30,32 +30,35 @@ VAR_GLOBAL
 	n_Concrete_Controller_current_mode: INT;
 	
 	CONCRETE_PUMP: STRING := 'CONCRETE_PUMP'; //*****
+	
 	// Concrete Pump
 	// input
 	
-	b_Concrete_Pump_Power_On   : BOOL :=TRUE;  // Power On
-	b_Concrete_Pump_Forward_On : BOOL;  // Forward ON
-	b_Concrete_Pump_Backward_On: BOOL;  // Backward ON
+	b_Concrete_Pump_Power_On   : BOOL := TRUE;  	// Power On
+	b_Concrete_Pump_Forward_On : BOOL;  			// Forward ON
+	b_Concrete_Pump_Backward_On: BOOL;  			// Backward ON
 	
-	b_Concrete_Pump_Flush_On      : BOOL;  // FLUSH MODE ON
-	n_Concrete_Pump_Flush_Flowrate: REAL;  // READ [l/min]
+	b_Concrete_Pump_Flush_On      : BOOL;  			// FLUSH MODE ON
+	n_Concrete_Pump_Flush_Flowrate: REAL;  			// READ [l/min]
 	
-	b_Concrete_Pump_Check_On      : BOOL;       // CHECK MODE ON
+	b_Concrete_Pump_Check_On      : BOOL;       	// CHECK MODE ON
 	
 	// TODO: Need to check the range of flowrate
-	f_Concrete_Pump_Check_Flowrate: REAL;       // [O tp 24 l/min]
-	n_Concrete_Pump_Check_Duration: INT := 15;  // [s]
+	f_Concrete_Pump_Check_Flowrate: REAL;       	// [O tp X l/min]
+	n_Concrete_Pump_Check_Duration: INT := 15; 	 	// [s]
 	
-	f_Concrete_Pump_Set_Flowrate : REAL;          // [0 to 24 l/min]
-	f_Concrete_Pump_dosing_volume: REAL := 0.32;  // calibrated XXXXX
-	n_Concrete_Pump_Max_Speed    : INT := 75;     // calibrated XXXXX
-	n_Concrete_Pump_Set_Speed    : INT;           // WRITE VALUE From 0 to 75 [rpm]
+	f_Concrete_Pump_Set_Flowrate : REAL;          	// [0 to X l/min]
+	// check what is the dosing volume of your rotor stator.
+	f_Concrete_Pump_dosing_volume: REAL := 0.32;    // calibrated XXXXX
+	// It is better to check with the speed rpm mahcine. 
+	n_Concrete_Pump_Max_Speed    : INT := 75;       // calibrated XXXXX
+	n_Concrete_Pump_Set_Speed    : INT;             // WRITE VALUE From 0 to 75 [rpm]
 	
 	
 	b_CP1_is_run        : BOOL;
 	b_CP1_is_ready      : BOOL;
 	b_CP1_power_on      : BOOL;
-	b_CP1_safety_grid_on: BOOL;
+	b_CP1_safety_grid_on: BOOL; // a bit weired, it should be true.
 	b_CP1_drive_error   : BOOL;
 	
 	

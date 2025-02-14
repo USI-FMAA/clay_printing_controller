@@ -37,7 +37,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{7B28F6C2-EB88-41B9-9242-DAC70ABFED30}" Name="Printing_Controller" PrjFilePath="Printing_Controller\Printing_Controller.plcproj" TmcFilePath="Printing_Controller\Printing_Controller.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Printing_Controller\Printing_Controller.tmc" TmcHash="{DB973FFB-D3DF-516E-2DAF-548782652D31}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Printing_Controller\Printing_Controller.tmc" TmcHash="{189A0171-23D5-0D04-51E7-4CB9E964819C}">
 					<Name>Printing_Controller Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -623,7 +623,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CP1_Actual_Speed" VarB="AI Standard Channel 1^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL4134)">
-				<Link VarA="PlcTask Outputs^GVL_IO.on_CP1_Speed_test" VarB="AO Output Channel 1^Analog output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.on_CP1_Speed" VarB="AO Output Channel 1^Analog output"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

@@ -87,6 +87,7 @@ fb_SetOutputDataToIO(
 	b_CP1_Backward_On      := GVL_LAP.b_Concrete_Pump_Backward_On,
 	b_CP1_Flush_On         := GVL_LAP.b_Concrete_Pump_Flush_On,
 	b_CP1_Check_On         := GVL_LAP.b_Concrete_Pump_Check_On,
+	// Here need to change to True, once the real flowrate Calibation is done.
 	n_CP_Flowrate_mode     := FALSE,
 	n_CP1_Operate_Flowrate := REAL_TO_UDINT(GVL_LAP.f_Concrete_Pump_Set_Flowrate*100),
 	n_CP1_Check_Flowrate   := REAL_TO_UDINT(GVL_LAP.f_Concrete_Pump_Check_Flowrate*100),
@@ -149,7 +150,9 @@ fb_getOutputData(
       <LineId Id="164" Count="0" />
       <LineId Id="37" Count="0" />
       <LineId Id="165" Count="1" />
-      <LineId Id="38" Count="35" />
+      <LineId Id="38" Count="29" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="68" Count="5" />
       <LineId Id="76" Count="36" />
       <LineId Id="114" Count="3" />
       <LineId Id="142" Count="2" />

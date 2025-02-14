@@ -29,6 +29,8 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	temp_CP1_Actual_Speed: REAL;
+	temp_CP1_torque: REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -87,12 +89,17 @@ b_CP1_drive_error := GVL.b_CP1_drive_error;
 // TODO: make it from actual speed value.
 
 IF b_Output_number_REALMode THEN
-	f_CP1_status_torque := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed)*0.1;
-	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed)*0.1;
+	
+	temp_CP1_Actual_Speed:=(GVL_IO.ib_CP1_Actual_Speed/32767)*1500;
+	f_CP1_status_speed := F_LowpassFilter(temp_CP1_Actual_Speed)/20;
+	temp_CP1_torque:= LREAL_TO_REAL(2*PI*temp_CP1_Actual_Speed/60);	// before Gear
+	f_CP1_status_torque:=temp_CP1_Torque*20;	//after Gear
 
 ELSE
-	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed);
-	f_CP1_status_speed := F_LowpassFilter(GVL_IO.ib_CP1_Actual_Speed);
+	temp_CP1_Actual_Speed:=(GVL_IO.ib_CP1_Actual_Speed/32767)*1500;
+	f_CP1_status_speed := F_LowpassFilter(temp_CP1_Actual_Speed)/20;
+	temp_CP1_torque:= LREAL_TO_REAL(2*PI*temp_CP1_Actual_Speed/60);	// before Gear
+	f_CP1_status_torque:=temp_CP1_Torque*20;	//after Gear
 END_IF
 
 // Temperature
@@ -108,9 +115,15 @@ END_IF
       <LineId Id="178" Count="0" />
       <LineId Id="55" Count="36" />
       <LineId Id="192" Count="0" />
-      <LineId Id="186" Count="1" />
+      <LineId Id="186" Count="0" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="223" Count="0" />
       <LineId Id="193" Count="0" />
-      <LineId Id="188" Count="3" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="230" Count="0" />
+      <LineId Id="188" Count="1" />
+      <LineId Id="233" Count="2" />
+      <LineId Id="191" Count="0" />
       <LineId Id="185" Count="0" />
       <LineId Id="184" Count="0" />
       <LineId Id="94" Count="3" />

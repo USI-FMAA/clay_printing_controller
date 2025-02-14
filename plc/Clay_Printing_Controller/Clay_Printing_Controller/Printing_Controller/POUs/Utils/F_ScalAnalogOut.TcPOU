@@ -35,6 +35,13 @@ END_VAR
 // Copyright   :  USI FMAA Mendrisio(CH) 2025
 //
 // ***********************************************************************************
+
+// Convert integer to real 
+f_Input:=UDINT_TO_REAL(n_Input);
+f_InMin:=UDINT_TO_REAL(n_InMin);
+f_InMax:=UDINT_TO_REAL(n_InMax);
+f_OutMin:=UDINT_TO_REAL(n_OutMin);
+f_OutMax:=UDINT_TO_REAL(n_OutMax);
 //
 // Check plausibility 
 
@@ -55,12 +62,15 @@ ELSE
 	// Plausible calculate output 
 	f_DeltaIn:=f_InMax-f_InMin;
 	f_DeltaOut:=f_OutMax-f_OutMin;
-	F_ScalAnalogOut :=REAL_TO_INT((f_DeltaOut/f_DeltaIn)*(f_Input-f_InMin));	
+	F_ScalAnalogOut :=REAL_TO_INT((f_DeltaOut/f_DeltaIn)*(f_Input-f_InMin));
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="F_ScalAnalogOut">
       <LineId Id="49" Count="12" />
       <LineId Id="48" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="81" Count="4" />
+      <LineId Id="80" Count="0" />
       <LineId Id="27" Count="20" />
       <LineId Id="9" Count="0" />
     </LineIds>
