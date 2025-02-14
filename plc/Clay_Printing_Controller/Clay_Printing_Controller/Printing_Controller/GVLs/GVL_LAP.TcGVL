@@ -33,7 +33,7 @@ VAR_GLOBAL
 	// Concrete Pump
 	// input
 	
-	b_Concrete_Pump_Power_On   : BOOL;  // Power On
+	b_Concrete_Pump_Power_On   : BOOL :=TRUE;  // Power On
 	b_Concrete_Pump_Forward_On : BOOL;  // Forward ON
 	b_Concrete_Pump_Backward_On: BOOL;  // Backward ON
 	

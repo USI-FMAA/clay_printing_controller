@@ -27,7 +27,7 @@
 		<ImageData Id="1003">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{97A95C51-F4F3-4ACF-A1F7-E60EEC8F9042}" Target64Bit="true" ShowHideConfigurations="#x6">
+	<Project ProjectGUID="{97A95C51-F4F3-4ACF-A1F7-E60EEC8F9042}" TargetNetId="5.151.68.134.1.1" Target64Bit="true" ShowHideConfigurations="#x6">
 		<System>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
@@ -37,13 +37,13 @@
 		</System>
 		<Plc>
 			<Project GUID="{7B28F6C2-EB88-41B9-9242-DAC70ABFED30}" Name="Printing_Controller" PrjFilePath="Printing_Controller\Printing_Controller.plcproj" TmcFilePath="Printing_Controller\Printing_Controller.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Printing_Controller\Printing_Controller.tmc" TmcHash="{B8C8FC44-2EAA-4DAA-38C9-1B5944100082}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Printing_Controller\Printing_Controller.tmc" TmcHash="{DB973FFB-D3DF-516E-2DAF-548782652D31}">
 					<Name>Printing_Controller Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_IO.ib_CC1_Safety_Ready</Name>
+							<Name>GVL_IO.ib_CC1_Safety_Ready_NOT_IMP</Name>
 							<Comment><![CDATA[ DI1]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -78,14 +78,14 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_IO.ibSpare1</Name>
-							<Comment><![CDATA[DI5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_IO.ib_CP1_Actual_Speed</Name>
 							<Comment><![CDATA[ AI1]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.ibSpare1</Name>
+							<Comment><![CDATA[DI5]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_IO.inSpare2</Name>
@@ -131,14 +131,19 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_IO.obSpare6</Name>
-							<Comment><![CDATA[DO6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_IO.on_CP1_Speed</Name>
 							<Comment><![CDATA[AO1]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.on_CP1_Speed_test</Name>
+							<Comment><![CDATA[AOTemp]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.obSpare6</Name>
+							<Comment><![CDATA[DO6]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_IO.obSpare7</Name>
@@ -166,6 +171,13 @@
 							<Type>INT</Type>
 						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2025-02-13T21:45:15">
+						<OwnerA Name="InputDst" Prefix="TIPC^Printing_Controller^Printing_Controller Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1008)">
+								<Link VarA="GVL_IO.ib_CC1_Safety_Ready" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Input" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
@@ -526,7 +538,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 					<Box Id="5" BoxType="9099" BoxFlags="#x00000020">
 						<Name>Term 5 (EL4134)</Name>
 						<ImageId>1003</ImageId>
-						<EtherCAT SlaveType="2" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10263052" RevisionNo="#x03fd0000" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4134 4Ch. Ana. Output -10/+10V, 16bit" Desc="EL4134" PortABoxInfo="#x01000004">
+						<EtherCAT SlaveType="2" PdiType="#x0c05" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x10263052" RevisionNo="#x03fd0000" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4134 4Ch. Ana. Output -10/+10V, 16bit" Desc="EL4134" PortABoxInfo="#x01000004">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 							<SyncMan>001108002400010003000000000000000800001124010000</SyncMan>
@@ -565,7 +577,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 					<Box Id="6" BoxType="9107" BoxFlags="#x00000020">
 						<Name>Term 6 (EL6631-0010)</Name>
 						<ImageId>124</ImageId>
-						<EtherCAT SlaveType="5" AdsServerAddress="ac1bb00102070000" FixedAdsServerNetId="true" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x19e73052" RevisionNo="#x0012000a" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="10000" TimeoutStateChange3="20000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6631-0010 PROFINET IO Device" Desc="EL6631-0010" PortABoxInfo="#x01000005">
+						<EtherCAT SlaveType="5" AdsServerAddress="0597448602070000" PdiType="#x0c08" ExecIo="true" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="47" FoeType="1" VendorId="#x00000002" ProductCode="#x19e73052" RevisionNo="#x0012000a" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="10000" TimeoutStateChange3="20000" GenerateOwnNetId="true" InitializeOwnNetId="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6631-0010 PROFINET IO Device" Desc="EL6631-0010" PortABoxInfo="#x01000005">
 							<SyncMan>001000042600010001000000400000040004001026010000</SyncMan>
 							<SyncMan>001400042200010002000000400000040004001422010000</SyncMan>
 							<SyncMan>001800006400000003000000000000000000001864010000</SyncMan>
@@ -595,7 +607,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CC1_Button_Mode_Laptop" VarB="Channel 8^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CC1_Button_Mode_Manual" VarB="Channel 6^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CC1_Button_Reset" VarB="Channel 7^Input"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.ib_CC1_Safety_Ready" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.ib_CC1_Safety_Ready_NOT_IMP" VarB="Channel 1^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CP1_Drive_Error" VarB="Channel 4^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CP1_Ready" VarB="Channel 3^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CP1_Safety_Grid_Mounted" VarB="Channel 2^Input"/>
@@ -611,7 +623,7 @@ Bit1: Value bigger/equal Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_IO.ib_CP1_Actual_Speed" VarB="AI Standard Channel 1^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL4134)">
-				<Link VarA="PlcTask Outputs^GVL_IO.on_CP1_Speed" VarB="AO Output Channel 1^Analog output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.on_CP1_Speed_test" VarB="AO Output Channel 1^Analog output"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

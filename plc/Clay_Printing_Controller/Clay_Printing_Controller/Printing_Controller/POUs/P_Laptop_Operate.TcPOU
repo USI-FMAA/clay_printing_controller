@@ -55,6 +55,9 @@ IF fb_CC1_Trigger_Safety_Off.Q THEN
 END_IF
 GVL_IO.ob_CC1_Safety_Reset:= b_Safety_Reset OR GVL_IO.ib_CC1_Button_Reset;
 
+// Safety_Ready need to implement with the setup
+GVL_IO.ib_CC1_Safety_Ready:=TRUE;
+
 // Concrete Controller enable
 P_CC1_Enable( b_set_run:= GVL_LAP.b_Concrete_Controller_enable );
 
@@ -84,15 +87,13 @@ fb_SetOutputDataToIO(
 	b_CP1_Backward_On      := GVL_LAP.b_Concrete_Pump_Backward_On,
 	b_CP1_Flush_On         := GVL_LAP.b_Concrete_Pump_Flush_On,
 	b_CP1_Check_On         := GVL_LAP.b_Concrete_Pump_Check_On,
-	n_CP_Flowrate_mode     := TRUE,
+	n_CP_Flowrate_mode     := FALSE,
 	n_CP1_Operate_Flowrate := REAL_TO_UDINT(GVL_LAP.f_Concrete_Pump_Set_Flowrate*100),
 	n_CP1_Check_Flowrate   := REAL_TO_UDINT(GVL_LAP.f_Concrete_Pump_Check_Flowrate*100),
 	n_CP1_Flush_Flowrate   := REAL_TO_UDINT(GVL_LAP.n_Concrete_Pump_Flush_Flowrate*100),
 	f_dosing_volume        := REAL_TO_INT(GVL_LAP.f_concrete_pump_dosing_volume*100),
 	n_cp1_max_speed        := GVL_LAP.n_concrete_pump_max_speed,
 	n_cp1_target_speed     := GVL_LAP.n_concrete_pump_set_speed,
-
-  //
 	);
 
 
@@ -144,7 +145,12 @@ fb_getOutputData(
       <LineId Id="5" Count="0" />
       <LineId Id="4" Count="0" />
       <LineId Id="123" Count="0" />
-      <LineId Id="6" Count="106" />
+      <LineId Id="6" Count="30" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="165" Count="1" />
+      <LineId Id="38" Count="35" />
+      <LineId Id="76" Count="36" />
       <LineId Id="114" Count="3" />
       <LineId Id="142" Count="2" />
       <LineId Id="122" Count="0" />

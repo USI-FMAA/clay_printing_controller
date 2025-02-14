@@ -76,7 +76,7 @@ b_CP1_is_ready := GVL.b_CP1_is_ready;
 GVL.b_CP1_power_on :=  GVL_IO.ib_CP1_Ready;
 b_CP1_power_on := GVL.b_CP1_power_on;
 
-GVL.b_CP1_safety_grid_on := GVL_IO.ib_CP1_Safety_Grid_Mounted;
+GVL.b_CP1_safety_grid_on := NOT GVL_IO.ib_CP1_Safety_Grid_Mounted;
 b_CP1_safety_grid_on := GVL.b_CP1_safety_grid_on;
 
 GVL.b_CP1_drive_error := GVL_IO.ib_CP1_Drive_Error;

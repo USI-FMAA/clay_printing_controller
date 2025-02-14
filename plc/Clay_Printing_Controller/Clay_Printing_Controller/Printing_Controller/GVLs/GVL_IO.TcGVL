@@ -23,7 +23,8 @@ VAR_GLOBAL
 	// ***** HARDWARE INPUT ******
 
 	// Concrete Controller 1
-	ib_CC1_Safety_Ready        AT %I*: BOOL;  // DI1
+	ib_CC1_Safety_Ready_NOT_IMP        AT %I*: BOOL;  // DI1
+	ib_CC1_Safety_Ready:BOOL;
 	ib_CC1_Button_Mode_Manual  AT %I*: BOOL;  // DI6
 	ib_CC1_Button_Mode_Laptop  AT %I*: BOOL;  // DI8
 	ib_CC1_Button_Reset        AT %I*: BOOL;  // DI7
@@ -52,6 +53,7 @@ VAR_GLOBAL
 	ob_CP1_Forward  AT %Q*: BOOL;  //DO4
 	ob_CP1_Backward AT %Q*: BOOL;  //DO5
 	on_CP1_Speed    AT %Q*: INT;   //AO1
+	on_CP1_Speed_test    AT %Q*: INT;   //AOTemp
 
 	// Spare Slot
 	obSpare6 AT %Q*: BOOL;  //DO6

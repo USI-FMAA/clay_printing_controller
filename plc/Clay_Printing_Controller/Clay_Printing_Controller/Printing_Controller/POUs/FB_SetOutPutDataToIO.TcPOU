@@ -15,7 +15,7 @@ VAR_INPUT
 	n_CP1_Flush_Flowrate : UDINT;
 	f_dosing_volume:INT;
 
-	n_CP1_max_speed : INT;  // rpm
+	n_CP1_max_speed : INT ;  // rpm
 	n_CP1_target_speed: INT; // rpm
 
 	// Example for AP1
