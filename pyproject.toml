@@ -1,7 +1,7 @@
 [project]
 name = "clay_printing"
 version = "0.1.0"
-description = "A project for contorl clay printing contrller"
+description = "A project for control clay printing controller"
 authors = [{ name = "Wei-Ting Chen", email = "chen@mesh.ch" }]
 
 readme = "README.md"

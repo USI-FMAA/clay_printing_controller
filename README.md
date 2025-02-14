@@ -22,12 +22,14 @@ Also, Check more information for reference from previous project [DCS Controller
 #### Development environment
 
 Create a virtual environment
+we also can change to pyvenv, just I use uv.
 
 ``` bash
 uv venv --python 3.12
 source venv/bin/activate
 uv pip install -e .
 ```
+
 
 ## Package Information
 > [!NOTE]
