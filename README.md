@@ -52,9 +52,9 @@ pip install -e .
 * `script`: the example script for controlling Beckhoff controller via Python script.
 
 > [!NOTE]
-> The controller program class diagram coming soon.
+> The controller program class diagram is coming soon.
 
-![](./docs/image_folder_structure.png)
+![alt text](./docs/image/folder_structure.png)
 
 ## Credits
 Author: [Wei-Ting Chen]
