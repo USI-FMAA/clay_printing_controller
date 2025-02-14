@@ -54,7 +54,7 @@ pip install -e .
 > [!NOTE]
 > The controller program class diagram coming soon.
 
-![folder structure](./docs/folder_structure.png)
+![](./docs/image_folder_structure.png)
 
 ## Credits
 Author: [Wei-Ting Chen]
