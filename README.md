@@ -50,7 +50,8 @@ pip install -e .
 * `plc`: the TwinCAT project for the PLC controller.
 * `robot`: the folder for the robot control.
 * `script`: the example script for controlling Beckhoff controller via Python script.
-- folder structure
+
+Folder structure  
 ![alt text](./docs/image/folder_structure.png)
 
 > [!NOTE]
