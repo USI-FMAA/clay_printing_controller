@@ -16,6 +16,7 @@ dependencies = [
   "python-multipart>=0.0.19",
   "debugpy>=1.8.9",
   "numpy>=1.21.2",
+  "pydantic>=2.10.6",
 
   # ads communication with beckhoff TwinCAT
   "pyads>=3.4.2",
