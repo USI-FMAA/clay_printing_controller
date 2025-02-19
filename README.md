@@ -8,7 +8,7 @@ This a repository for the Clay Printing Controller.
 
 ## Development
 
-- TwinCAT: `v3.1 build4022.24`
+- TwinCAT: `v3.1 build4024`
 - [UV]: A Blazing fast Python package management (in Rust)
 
 ### Getting Started
@@ -25,7 +25,13 @@ Create a virtual environment
 
 ``` bash
 uv venv --python 3.12
+
+# activate the virtual environment
+## WSL
 source venv/bin/activate
+# #Windows
+.\venv\Scripts\activate
+
 uv pip install -e .
 ```
 Run the main script
@@ -33,7 +39,6 @@ Run the main script
 ``` bash
 uv run /src/clay_printing/main.py
 ```
-
 
 We also can change to `venv`, but recommend to use `uv`.
 
