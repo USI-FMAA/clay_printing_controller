@@ -90,16 +90,18 @@ b_CP1_drive_error := GVL.b_CP1_drive_error;
 
 IF b_Output_number_REALMode THEN
 	
-	temp_CP1_Actual_Speed:=(GVL_IO.ib_CP1_Actual_Speed/32767)*1500;
+	temp_CP1_Actual_Speed:=(INT_TO_REAL(GVL_IO.ib_CP1_Actual_Speed)/32767)*1500;
 	f_CP1_status_speed := F_LowpassFilter(temp_CP1_Actual_Speed)/20;
 	temp_CP1_torque:= LREAL_TO_REAL(2*PI*temp_CP1_Actual_Speed/60);	// before Gear
 	f_CP1_status_torque:=temp_CP1_Torque*20;	//after Gear
 
 ELSE
-	temp_CP1_Actual_Speed:=(GVL_IO.ib_CP1_Actual_Speed/32767)*1500;
+	
+	temp_CP1_Actual_Speed:=(INT_TO_REAL(GVL_IO.ib_CP1_Actual_Speed)/32767)*1500;
 	f_CP1_status_speed := F_LowpassFilter(temp_CP1_Actual_Speed)/20;
 	temp_CP1_torque:= LREAL_TO_REAL(2*PI*temp_CP1_Actual_Speed/60);	// before Gear
 	f_CP1_status_torque:=temp_CP1_Torque*20;	//after Gear
+
 END_IF
 
 // Temperature
@@ -122,8 +124,10 @@ END_IF
       <LineId Id="231" Count="0" />
       <LineId Id="230" Count="0" />
       <LineId Id="188" Count="1" />
+      <LineId Id="267" Count="0" />
       <LineId Id="233" Count="2" />
       <LineId Id="191" Count="0" />
+      <LineId Id="268" Count="0" />
       <LineId Id="185" Count="0" />
       <LineId Id="184" Count="0" />
       <LineId Id="94" Count="3" />
