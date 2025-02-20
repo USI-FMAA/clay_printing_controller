@@ -24,17 +24,16 @@ class PLC(BaseModel):
 
   def connect(self) -> bool:
     """Connect to the PLC."""
-    with self.lock_ads:
-      if not self.connection.is_open:
-        self.connection.open()
-      try:
-        self.connection.read_device_info()
-      except pyads.ADSError as e:
-        logger.error(f"Error: {e}")
-        return False
-      else:
-        logger.info(f"Connection: {self.connection.is_open}")
-        return True
+    if not self.connection.is_open:
+      self.connection.open()
+    try:
+      self.connection.read_device_info()
+    except pyads.ADSError as e:
+      logger.error(f"Error: {e}")
+      return False
+    else:
+      logger.info(f"Connection: {self.connection.is_open}")
+      return True
 
   def close(self):
     """Close the connection to the PLC."""
