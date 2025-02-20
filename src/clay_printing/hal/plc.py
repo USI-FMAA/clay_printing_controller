@@ -20,13 +20,7 @@ class PLC(BaseModel):
 
   def __init__(self, **data):
     super().__init__(**data)
-    self.connection = pyads.Connection(self.netid, pyads.PORT_TC3PLC1)
-
-  def close(self):
-    """Close the connection to the PLC."""
-    if self.connection and self.connection.is_open:
-      self.connection.close()
-    print("PLC connection closed")
+    self.connection = pyads.Connection(self.netid, pyads.PORT_TC3PLC1, self.ip)
 
   def connect(self) -> bool:
     """Connect to the PLC."""
@@ -36,11 +30,17 @@ class PLC(BaseModel):
       try:
         self.connection.read_device_info()
       except pyads.ADSError as e:
-        print(f"Error: {e}")
+        logger.error(f"Error: {e}")
         return False
       else:
-        print(f"Connection: {self.connection.is_open}")
+        logger.info(f"Connection: {self.connection.is_open}")
         return True
+
+  def close(self):
+    """Close the connection to the PLC."""
+    if self.connection and self.connection.is_open:
+      self.connection.close()
+    logger.info("PLC connection closed")
 
   def read_variables(self, variable: str) -> None:
     """Reads variable from PLC by given variable name.

@@ -9,7 +9,7 @@ from clay_printing.hal.plc import PLC
 
 CLIENT_ID = "5.151.68.134.1.1"  # PLC AMSNETID
 CLIENT_IP = "169.254.200.9"  # PLC IP
-NOW_DATE = datetime.now().date().strftime("%Y%m%d")  # Date
+# NOW_DATE = datetime.now().date().strftime("%Y%m%d")  # Date
 
 # =================================================================================
 
@@ -20,15 +20,16 @@ NOW_DATE = datetime.now().date().strftime("%Y%m%d")  # Date
 def main():
   """Main function to run the process."""
 
-  # plc = PLC(netid=CLIENT_ID, ip=CLIENT_IP)
-  # plc.connect()
+  plc = PLC(netid=CLIENT_ID, ip=CLIENT_IP)
+  plc.connect()
   logger.info("The process is running.")
-  logger.info(f"Data:{NOW_DATE}")
+  # logger.info(f"Data:{NOW_DATE}")
 
-  # plc.read_variables("GVL_LAP.f_CP1_status_torque")
+  plc.read_variables("GVL_LAP.f_CP1_status_torque")
   # plc.write_variables("GVL_LAP.n_Concrete_Pump_Set_Speed", 30)
+  plc.write_variables("GVL_LAP.b_Concrete_Pump_Forward_On", False)
 
-  # plc.close()
+  plc.close()
   logger.info("the process closed.")
 
 # TODO: Implement the process to run the process.
